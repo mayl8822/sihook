@@ -9,7 +9,7 @@
 #define SI_CLASSNAME_FRAME	"si_frame"
 #define SI_CLASSNAME_MDI	"MDIClient"
 
-#define SI_TAB_HEIGHT		24
+#define SI_TAB_HEIGHT		20
 #define SI_TAB_CLOSE_IDX	256
 
 #endif

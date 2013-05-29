@@ -44,12 +44,12 @@ static LRESULT CALLBACK TabCtlSubClass(HWND hWnd, UINT uMsg, WPARAM wParam, LPAR
 void SiTabCtl_Create(HWND parent)
 {
 	hwnd_tab_ctl = CreateWindowEx(0,WC_TABCONTROL,"",
-								WS_CHILD|WS_VISIBLE|TCS_BUTTONS|TCS_FLATBUTTONS|TCS_BOTTOM|TCS_MULTILINE|TCS_RAGGEDRIGHT|TCS_SCROLLOPPOSITE|TCS_FOCUSNEVER|TCS_OWNERDRAWFIXED,
+								WS_CHILD|WS_VISIBLE|TCS_BUTTONS|TCS_FLATBUTTONS|TCS_BOTTOM|TCS_MULTILINE|TCS_RAGGEDRIGHT|TCS_SCROLLOPPOSITE|TCS_FOCUSNEVER ,
 								0,0,0,SI_TAB_HEIGHT,parent,NULL,NULL,NULL);
-								
-	HFONT font = CreateFont(16,0,0,0,FW_NORMAL,FALSE,FALSE,0,DEFAULT_CHARSET,OUT_DEFAULT_PRECIS,CLIP_DEFAULT_PRECIS,DEFAULT_QUALITY,DEFAULT_PITCH | FF_SWISS,"Courier New");
+
+	HFONT font = CreateFont(14,0,0,0,FW_NORMAL,FALSE,FALSE,0,DEFAULT_CHARSET,OUT_DEFAULT_PRECIS,CLIP_DEFAULT_PRECIS,DEFAULT_QUALITY,DEFAULT_PITCH | FF_SWISS,"Courier New");
 	SendMessage(hwnd_tab_ctl,WM_SETFONT,(WPARAM)font,MAKELPARAM(1,0));
-							
+
 	SiTabCtl_AddCloseItem();
 	last_row_count = 1;
 	old_tab_ctl_proc = (WNDPROC)GetWindowLong(hwnd_tab_ctl,GWL_WNDPROC);
@@ -89,11 +89,12 @@ static void SiTabCtl_AddCloseItem(void)
 	TCITEM tci;
 	memset(&tci,0,sizeof(TCITEM));
 	tci.mask = TCIF_TEXT;
-	tci.pszText = "全部关闭";
+	tci.pszText = "x";
 	TabCtrl_InsertItem(hwnd_tab_ctl,SI_TAB_CLOSE_IDX,&tci);
 	//设置固定高度
 	SendMessage(hwnd_tab_ctl,TCM_GETITEMRECT,SI_TAB_CLOSE_IDX,(LPARAM)&rect);
 	SendMessage(hwnd_tab_ctl,TCM_SETITEMSIZE,SI_TAB_CLOSE_IDX,MAKELPARAM(rect.right-rect.left+1,SI_TAB_HEIGHT));
+	SendMessage(hwnd_tab_ctl,TCM_SETMINTABWIDTH,SI_TAB_CLOSE_IDX,4);
 }
 
 //添加Item
