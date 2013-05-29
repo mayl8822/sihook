@@ -8,3 +8,8 @@ bittools
 
 
 this is some tools that I get from internet. I change somethings follow my idea, I save them in here.
+
+ 1. sihook
+          from:  https://github.com/redxu/sihook
+
+
