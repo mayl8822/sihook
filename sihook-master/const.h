@@ -2,7 +2,7 @@
 #define __CONST__H__
 
 #define PLUGIN_VERSION	"v1.0"
-#define PLUGIN_TITLE	" ¼ÓÇ¿°æ"
+#define PLUGIN_TITLE	" "
 
 #define SI_BUF_SIZE			256
 

@@ -7,7 +7,7 @@ extern HWND hwnd_mdi_client;
 static WNDPROC old_mdi_client_proc = NULL;
 static WINDOWPOS last_windowpos;
 
-//获取窗口句柄
+//鑾峰彇绐楀彛鍙ユ焺
 HWND GetMdiClientHwnd(HWND parent)
 {
 	HWND find = NULL;
@@ -103,14 +103,14 @@ static LRESULT CALLBACK MdiClientSubClass(HWND hWnd, UINT uMsg, WPARAM wParam, L
 	return lr;
 }
 
-//重新调整窗口大小
+//閲嶆柊璋冩暣绐楀彛澶у皬
 void ResizeMdiClient(void)
 {
-	//调用MoveWindow立即重绘窗口
+	//璋冪敤MoveWindow绔嬪嵆閲嶇粯绐楀彛
 	MoveWindow(hwnd_mdi_client,last_windowpos.x,last_windowpos.y,last_windowpos.cx,last_windowpos.cy,TRUE);
 }
 
-//替换窗口消息
+//鏇挎崲绐楀彛娑堟伅
 void HookMdiClient(void)
 {
 	old_mdi_client_proc = (WNDPROC)GetWindowLong(hwnd_mdi_client,GWL_WNDPROC);

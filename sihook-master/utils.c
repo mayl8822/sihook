@@ -1,7 +1,7 @@
 #include <string.h>
 #include "utils.h"
 
-//Êä³öµ÷ÊÔĞÅÏ¢
+//è¾“å‡ºè°ƒè¯•ä¿¡æ¯
 void WINAPI OutputDebugStringEx(LPCTSTR lpcFormatText, ...)
 {
 	char szBuffer[1024];
@@ -14,7 +14,7 @@ void WINAPI OutputDebugStringEx(LPCTSTR lpcFormatText, ...)
 	OutputDebugString(szBuffer);
 }
 
-//»ñÈ¡¶Ì±êÌâ
+//è·å–çŸ­æ ‡é¢˜
 char* GetSiSwTitle(const char* lpc,char* title)
 {
 	int i,len;
@@ -67,8 +67,8 @@ static const char* strstri(const char* str,const char* subStr)
     return NULL;
 }
 
-//»ñÈ¡ÎÄ¼şÀàĞÍ
-//0 ÎŞÀàĞÍÄ¬ÈÏ
+//è·å–æ–‡ä»¶ç±»å‹
+//0 æ— ç±»å‹é»˜è®¤
 //1 *.c *.cpp *.cxx *.cs
 //2 *.h *.hpp *.hxx *.inc
 //3 *.txt *.text *.doc

@@ -20,7 +20,7 @@ static COLORREF color_table[10] =
 	RGB(255,241,134),	//vb
 };
 
-//º¯ÊýÉêÃ÷
+//å‡½æ•°ç”³æ˜Ž
 static void SiTabCtl_AddCloseItem(void);
 
 static LRESULT CALLBACK TabCtlSubClass(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -60,14 +60,14 @@ void SiTabCtl_Create(HWND parent)
 	SetWindowLong(hwnd_tab_ctl,GWL_WNDPROC,(DWORD)TabCtlSubClass);
 }
 
-//»ñÈ¡Ò³¸öÊý
+//èŽ·å–é¡µä¸ªæ•°
 int SiTabCtl_GetItemCount(void)
 {
-	//±£Áô¹Ø±Õ°´Å¥
+	//ä¿ç•™å…³é—­æŒ‰é’®
 	return TabCtrl_GetItemCount(hwnd_tab_ctl)-1;
 }
 
-//»ñÈ¡ÐÐÊý
+//èŽ·å–è¡Œæ•°
 int SiTabCtl_GetRowCount(void)
 {
 	int row = TabCtrl_GetRowCount(hwnd_tab_ctl);
@@ -76,13 +76,13 @@ int SiTabCtl_GetRowCount(void)
 	return row;
 }
 
-//»ñÈ¡¸ß¶È
+//èŽ·å–é«˜åº¦
 int SiTabCtl_GetHeight(void)
 {
 	return (SiTabCtl_GetRowCount()*SI_TAB_HEIGHT);
 }
 
-//Ìí¼Ó¹Ø±ÕItem
+//æ·»åŠ å…³é—­Item
 static void SiTabCtl_AddCloseItem(void)
 {
 	RECT rect;
@@ -91,16 +91,16 @@ static void SiTabCtl_AddCloseItem(void)
 	tci.mask = TCIF_TEXT;
 	tci.pszText = "x";
 	TabCtrl_InsertItem(hwnd_tab_ctl,SI_TAB_CLOSE_IDX,&tci);
-	//ÉèÖÃ¹Ì¶¨¸ß¶È
+	//è®¾ç½®å›ºå®šé«˜åº¦
 	SendMessage(hwnd_tab_ctl,TCM_GETITEMRECT,SI_TAB_CLOSE_IDX,(LPARAM)&rect);
 	SendMessage(hwnd_tab_ctl,TCM_SETITEMSIZE,SI_TAB_CLOSE_IDX,MAKELPARAM(rect.right-rect.left+1,SI_TAB_HEIGHT));
 	SendMessage(hwnd_tab_ctl,TCM_SETMINTABWIDTH,SI_TAB_CLOSE_IDX,4);
 }
 
-//Ìí¼ÓItem
+//æ·»åŠ Item
 void SiTabCtl_AddItem(char* title,HWND hwnd)
 {
-	//´´½¨
+	//åˆ›å»º
 	int idx = SiTabCtl_GetItemCount();
 	RECT rect;
 	TCITEM tci;
@@ -109,12 +109,12 @@ void SiTabCtl_AddItem(char* title,HWND hwnd)
 	tci.pszText = (LPSTR)title;
 	tci.lParam = (LPARAM)hwnd;
 	TabCtrl_InsertItem(hwnd_tab_ctl,idx,&tci);
-	//ÉèÖÃ¹Ì¶¨¸ß¶È
+	//è®¾ç½®å›ºå®šé«˜åº¦
 	SendMessage(hwnd_tab_ctl,TCM_GETITEMRECT,idx,(LPARAM)&rect);
 	SendMessage(hwnd_tab_ctl,TCM_SETITEMSIZE,idx,MAKELPARAM(rect.right-rect.left+1,SI_TAB_HEIGHT));
 }
 
-//²éÕÒitem
+//æŸ¥æ‰¾item
 int SiTabCtl_FindItem(HWND hwnd)
 {
 	int rtv = -1;
@@ -136,7 +136,7 @@ int SiTabCtl_FindItem(HWND hwnd)
 	return rtv;
 }
 
-//É¾³ýItem
+//åˆ é™¤Item
 void SiTabCtl_DelItem(HWND hwnd)
 {
 	int idx = SiTabCtl_FindItem(hwnd);
@@ -145,7 +145,7 @@ void SiTabCtl_DelItem(HWND hwnd)
 	TabCtrl_DeleteItem(hwnd_tab_ctl,idx);
 }
 
-//ÉèÖÃItemÎÄ×Ö
+//è®¾ç½®Itemæ–‡å­—
 void SiTabCtl_SetItemText(HWND hwnd,char* text)
 {
 	int idx = SiTabCtl_FindItem(hwnd);
@@ -160,7 +160,7 @@ void SiTabCtl_SetItemText(HWND hwnd,char* text)
 	TabCtrl_SetItem(hwnd_tab_ctl,idx,&tci);
 }
 
-//Ñ¡ÖÐItem
+//é€‰ä¸­Item
 void SiTabCtl_SetCurItem(HWND hwnd)
 {
 	int idx = SiTabCtl_FindItem(hwnd);
@@ -169,13 +169,13 @@ void SiTabCtl_SetCurItem(HWND hwnd)
 	TabCtrl_SetCurSel(hwnd_tab_ctl,idx);
 }
 
-//»ñÈ¡µ±Ç°Item
+//èŽ·å–å½“å‰Item
 int SiTabCtl_GetCurItem(void)
 {
 	return TabCtrl_GetCurSel(hwnd_tab_ctl);
 }
 
-//ÅÐ¶ÏÊÇ·ñÐÐÊý¸Ä±ä
+//åˆ¤æ–­æ˜¯å¦è¡Œæ•°æ”¹å˜
 BOOL SiTabCtl_IsRowChanged(void)
 {
 	int rtv = FALSE;
@@ -189,7 +189,7 @@ BOOL SiTabCtl_IsRowChanged(void)
 	return rtv;
 }
 
-//Î»ÖÃ¸Ä±ä
+//ä½ç½®æ”¹å˜
 void SiTabCtl_OnPosChanging(WINDOWPOS* pos)
 {
 	if(!(pos->flags & SWP_NOSIZE))
@@ -201,7 +201,7 @@ void SiTabCtl_OnPosChanging(WINDOWPOS* pos)
 	}
 }
 
-//±êÇ©Ñ¡ÖÐ¸Ä±ä
+//æ ‡ç­¾é€‰ä¸­æ”¹å˜
 void SiTabCtl_OnSelChange(void)
 {
 	HWND hwnd;
@@ -214,7 +214,7 @@ void SiTabCtl_OnSelChange(void)
 	SendMessage(GetParent(hwnd),WM_MDIACTIVATE,(WPARAM)hwnd,0);
 }
 
-//Ë«»÷Ñ¡Ïî¿¨
+//åŒå‡»é€‰é¡¹å¡
 void SiTabCtl_OnLButtonDblClk(void)
 {
 	HWND hwnd;
@@ -231,7 +231,7 @@ void SiTabCtl_OnLButtonDblClk(void)
 	SendMessage(hwnd,WM_SYSCOMMAND,SC_CLOSE,0);
 }
 
-//µ¥»÷Ñ¡Ïî¿¨
+//å•å‡»é€‰é¡¹å¡
 void SiTabCtl_OnLButtonClk(void)
 {
 	int rtv;
@@ -242,7 +242,7 @@ void SiTabCtl_OnLButtonClk(void)
 	if(count == 0)
 		return;
 
-	rtv = MessageBox(hwnd_tab_ctl,"ÊÇ·ñ¹Ø±ÕËùÓÐ±êÇ©?","sitab plugin by Red_angelX",MB_OKCANCEL|MB_ICONQUESTION|MB_DEFBUTTON2);
+	rtv = MessageBox(hwnd_tab_ctl,"æ˜¯å¦å…³é—­æ‰€æœ‰æ ‡ç­¾?","sitab plugin by Red_angelX",MB_OKCANCEL|MB_ICONQUESTION|MB_DEFBUTTON2);
 	if(rtv == IDCANCEL)
 		return;
 
@@ -260,7 +260,7 @@ void SiTabCtl_OnLButtonClk(void)
 	}
 }
 
-//ÖØ»æÑ¡Ïî¿¨
+//é‡ç»˜é€‰é¡¹å¡
 void SiTabCtl_OnDrawItem(DRAWITEMSTRUCT* item)
 {
 	HBRUSH hBrush;
@@ -275,7 +275,7 @@ void SiTabCtl_OnDrawItem(DRAWITEMSTRUCT* item)
 	TabCtrl_GetItem(hwnd_tab_ctl,item->itemID,&tci);
 
 	type = GetColorIndex(text);
-	//´´½¨ÑÕÉ«Îªhdc£¨´°¿Ú¾ØÐÎ£©±³¾°É«µÄÊµ»­Ë¢
+	//åˆ›å»ºé¢œè‰²ä¸ºhdcï¼ˆçª—å£çŸ©å½¢ï¼‰èƒŒæ™¯è‰²çš„å®žç”»åˆ·
 	hBrush = CreateSolidBrush(color_table[type]);
 	if(SiTabCtl_GetCurItem() == item->itemID)
 	{

@@ -23,7 +23,7 @@ static BOOL CALLBACK EnumWindowsProc(HWND hwnd,LPARAM lparam)
 	return TRUE;
 }
 
-//获取窗口句柄
+//鑾峰彇绐楀彛鍙ユ焺
 HWND GetSiFrameHwnd(void)
 {
 	DWORD processid = GetCurrentProcessId();
@@ -82,7 +82,7 @@ static LRESULT CALLBACK SiFrameSubClass(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 	return lr;
 }
 
-//替换窗口消息
+//鏇挎崲绐楀彛娑堟伅
 void HookSiFrame(void)
 {
 	char text[256];

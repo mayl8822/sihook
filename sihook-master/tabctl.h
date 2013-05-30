@@ -5,37 +5,37 @@
 #include <commctrl.h>
 #include <wingdi.h>
 
-//´´½¨TabCtl
+//åˆ›å»ºTabCtl
 void SiTabCtl_Create(HWND parent);
-//»ñÈ¡Ò³¸öÊı
+//è·å–é¡µä¸ªæ•°
 int SiTabCtl_GetItemCount(void);
-//»ñÈ¡ĞĞÊı
+//è·å–è¡Œæ•°
 int SiTabCtl_GetRowCount(void);
-//»ñÈ¡¸ß¶È
+//è·å–é«˜åº¦
 int SiTabCtl_GetHeight(void);
-//Ìí¼ÓItem
+//æ·»åŠ Item
 void SiTabCtl_AddItem(char* title,HWND hwnd);
-//²éÕÒitem
+//æŸ¥æ‰¾item
 int SiTabCtl_FindItem(HWND hwnd);
-//É¾³ıItem
+//åˆ é™¤Item
 void SiTabCtl_DelItem(HWND hwnd);
-//ÉèÖÃItemÎÄ×Ö
+//è®¾ç½®Itemæ–‡å­—
 void SiTabCtl_SetItemText(HWND hwnd,char* text);
-//Ñ¡ÖĞItem
+//é€‰ä¸­Item
 void SiTabCtl_SetCurItem(HWND hwnd);
-//»ñÈ¡µ±Ç°Item
+//è·å–å½“å‰Item
 int SiTabCtl_GetCurItem(void);
-//ÅĞ¶ÏÊÇ·ñĞĞÊı¸Ä±ä
+//åˆ¤æ–­æ˜¯å¦è¡Œæ•°æ”¹å˜
 BOOL SiTabCtl_IsRowChanged(void);
-//Î»ÖÃ¸Ä±ä
+//ä½ç½®æ”¹å˜
 void SiTabCtl_OnPosChanging(WINDOWPOS* pos);
-//Ñ¡Ïî¿¨¸Ä±ä
+//é€‰é¡¹å¡æ”¹å˜
 void SiTabCtl_OnSelChange(void);
-//Ë«»÷Ñ¡Ïî¿¨
+//åŒå‡»é€‰é¡¹å¡
 void SiTabCtl_OnLButtonDblClk(void);
-//µ¥»÷Ñ¡Ïî¿¨
+//å•å‡»é€‰é¡¹å¡
 void SiTabCtl_OnLButtonClk(void);
-//ÖØ»æÑ¡Ïî¿¨
+//é‡ç»˜é€‰é¡¹å¡
 void SiTabCtl_OnDrawItem(DRAWITEMSTRUCT* item);
 
 #endif

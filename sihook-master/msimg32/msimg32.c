@@ -1,9 +1,9 @@
 #include <windows.h>
 
-static HMODULE m_hModule = NULL;	// Ô­Ê¼Ä£¿é¾ä±ú
-static DWORD m_dwReturn[5] = {0};	// Ô­Ê¼º¯Êı·µ»ØµØÖ·
+static HMODULE m_hModule = NULL;	// åŸå§‹æ¨¡å—å¥æŸ„
+static DWORD m_dwReturn[5] = {0};	// åŸå§‹å‡½æ•°è¿”å›åœ°å€
 
-// ¼ÓÔØÔ­Ê¼Ä£¿é
+// åŠ è½½åŸå§‹æ¨¡å—
 static inline BOOL WINAPI Load()
 {
     TCHAR tzPath[MAX_PATH];
@@ -14,15 +14,15 @@ static inline BOOL WINAPI Load()
     m_hModule = LoadLibrary(tzPath);
     if (m_hModule == NULL)
     {
-        wsprintf(tzTemp, TEXT("ÎŞ·¨¼ÓÔØ %s£¬³ÌĞòÎŞ·¨Õı³£ÔËĞĞ¡£"), tzPath);
+        wsprintf(tzTemp, TEXT("æ— æ³•åŠ è½½ %sï¼Œç¨‹åºæ— æ³•æ­£å¸¸è¿è¡Œã€‚"), tzPath);
         OutputDebugString(tzTemp);
         ExitProcess(-2);
     }
-    else OutputDebugString("Òıµ¼msimg32");
+    else OutputDebugString("å¼•å¯¼msimg32");
     return (m_hModule != NULL);
 }
 
-// ÊÍ·ÅÔ­Ê¼Ä£¿é
+// é‡Šæ”¾åŸå§‹æ¨¡å—
 static inline VOID WINAPI Free()
 {
     if (m_hModule)
@@ -31,7 +31,7 @@ static inline VOID WINAPI Free()
     }
 }
 
-// »ñÈ¡Ô­Ê¼º¯ÊıµØÖ·
+// è·å–åŸå§‹å‡½æ•°åœ°å€
 static FARPROC WINAPI GetAddress(PCSTR pszProcName)
 {
     FARPROC fpAddress;
@@ -47,7 +47,7 @@ static FARPROC WINAPI GetAddress(PCSTR pszProcName)
             pszProcName = szProcName;
         }
 
-        wsprintf(tzTemp, TEXT("ÎŞ·¨ÕÒµ½º¯Êı %s£¬³ÌĞòÎŞ·¨Õı³£ÔËĞĞ¡£"), pszProcName);
+        wsprintf(tzTemp, TEXT("æ— æ³•æ‰¾åˆ°å‡½æ•° %sï¼Œç¨‹åºæ— æ³•æ­£å¸¸è¿è¡Œã€‚"), pszProcName);
         OutputDebugString(tzTemp);
         ExitProcess(-2);
     }
@@ -65,9 +65,9 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, PVOID pvReserved)
 
         HMODULE hMyDLL = LoadLibrary("sihook.dll");
         if (hMyDLL == NULL)
-            OutputDebugString("¼ÓÔØsihook.dllÊ§°Ü");
+            OutputDebugString("åŠ è½½sihook.dllå¤±è´¥");
         else
-            OutputDebugString("¼ÓÔØsihook.dll³É¹¦");
+            OutputDebugString("åŠ è½½sihook.dllæˆåŠŸ");
         return TRUE;
     }
     else if (dwReason == DLL_PROCESS_DETACH)

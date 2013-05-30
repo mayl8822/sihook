@@ -3,10 +3,10 @@
 
 #include <windows.h>
 
-//获取窗口句柄
+//鑾峰彇绐楀彛鍙ユ焺
 HWND GetSiFrameHwnd(void);
 
-//替换窗口消息
+//鏇挎崲绐楀彛娑堟伅
 void HookSiFrame(void);
 
 #endif

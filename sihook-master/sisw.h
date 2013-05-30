@@ -2,11 +2,11 @@
 #define __SISW__H__
 
 #include <windows.h>
-//»ñÈ¡¶Ì±êÌâ
+//è·å–çŸ­æ ‡é¢˜
 char* GetSiSwTitle(const char* lpc,char* title);
-//»ñÈ¡si_Sw´°¿Ú¹ı³Ì
+//è·å–si_Swçª—å£è¿‡ç¨‹
 void HookSiSw(HWND hwnd);
-//»Ö¸´si_Sw´°¿Ú¹ı³Ì
+//æ¢å¤si_Swçª—å£è¿‡ç¨‹
 void UnhookSiSw(HWND hwnd);
 
 #endif

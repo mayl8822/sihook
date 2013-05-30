@@ -3,14 +3,14 @@
 
 #include <windows.h>
 
-//Êä³öµ÷ÊÔĞÅÏ¢
+//è¾“å‡ºè°ƒè¯•ä¿¡æ¯
 void WINAPI OutputDebugStringEx(LPCTSTR lpcFormatText, ...);
 
-//»ñÈ¡¶Ì±êÌâ
+//è·å–çŸ­æ ‡é¢˜
 char* GetSiSwTitle(const char* lpc,char* title);
 
-//»ñÈ¡ÎÄ¼şÀàĞÍ
-//0 ÎŞÀàĞÍÄ¬ÈÏ
+//è·å–æ–‡ä»¶ç±»å‹
+//0 æ— ç±»å‹é»˜è®¤
 //1 *.c *.cpp *.cxx *.cs
 //2 *.h *.hpp *.hxx *.inc
 //3 *.txt *.text *.doc
