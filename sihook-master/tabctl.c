@@ -242,7 +242,7 @@ void SiTabCtl_OnLButtonClk(void)
 	if(count == 0)
 		return;
 
-	rtv = MessageBox(hwnd_tab_ctl,"是否关闭所有标签?","sitab plugin by Red_angelX",MB_OKCANCEL|MB_ICONQUESTION|MB_DEFBUTTON2);
+	rtv = MessageBox(hwnd_tab_ctl,"Do you want to close all tabs ?  ","sitab plugin by Red_angelX",MB_OKCANCEL|MB_ICONQUESTION|MB_DEFBUTTON2);
 	if(rtv == IDCANCEL)
 		return;
 
