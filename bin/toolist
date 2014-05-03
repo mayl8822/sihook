@@ -1,0 +1,2 @@
+enca -L zh_CN -x GBK fs.h
+
